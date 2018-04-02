@@ -1,0 +1,18 @@
+sudo: false
+language: ruby
+services:
+  - docker
+before_install:
+  - git clone --depth 1 https://github.com/seiferma/Docker_BuildUtils.git /tmp/BuildUtils
+  - . /tmp/BuildUtils/travisSetup.sh
+script:
+  - travisBuildDockerhub.sh
+deploy:
+  provider: script
+  script: travisDeployDockerhub.sh
+  on:
+    branch: master
+env:
+  global: 
+    - IMAGE_NAME=seiferma/murmur
+    - secure: "kOqBXhiu+Ed6QlnarI9Xw0YzzWtFVsmBeFChuBLiF0Gsgt+KpfqpTo7gbq2howcSPDeTmIDvYBLmy/X7CKvlhEhswsZrEEu4u7hh+K3tqLuS9wcxN7KX0GvoCm6/Nbr0oGC7lMsCPVLnofMN5lDJoc1sK8Ho1LM5RyWCJ1yjy78C9o8Uz14CQ6hQmZLCo1Z7/RCnHsODLZhx1iKzTfGs+w/xZDFkhIxaBTU3A01KAtSLrCv38DL3pMsV9MnYOJ9jWfpAcrM/7LIuK1F5YbdhYDzSkrz42qHBtOH+0ysSt8mBznZ0lseA97csz7md2wnBZPtKCjdecdc7LCNmt1Z6UFkmuDC3riN/+v75frVhAbruWCLE/vD506YonLJ7ziAmciS3sdnatcbBNSXy/SfRIoIZLMThA3wCI50i04xfC8nuhfGkfA1eGp17zfBTvR4DIJD3KOeaagcE0ihOhLf2eS7TiDc3GTg4rf/VXhZssX9+Y+x/nkZ3FNITnCB+M58/QMCKbfc92cldQz12T3fnE3W6PhpR90J6WHy8823e7zr4USvHVAWPoX1gPsNtwyr0/RI2DgSFhQl7Z2PEDKnML+BceGfN8x/N49rhzV0ZP+gzoNBaLaJ8kKY/suKVsgaJx032iR0yUCH3zz6wjpiCyNwdi8ANNgBY3z4XeIDhKkA="
