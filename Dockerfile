@@ -2,7 +2,7 @@ FROM alpine:latest
 
 WORKDIR /murmur
 
-RUN VERSION=1.3.0-r0 && \
+RUN VERSION=1.3.0-r4 && \
     apk --no-cache add murmur=${VERSION} && \
     VERSION=
 
