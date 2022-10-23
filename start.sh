@@ -1,12 +1,15 @@
 #!/bin/sh
 
-if [ ! -f $DATA_VOLUME/murmur.ini ]; then
-        cp murmur.ini $DATA_VOLUME
+echo "Generating server configuration"
+cat /opt/murmur.base.ini | envsubst > /etc/murmur.ini
+if [ "$MURMUR_CERT" != "" -o "$MURMUR_KEY" != "" ]; then
+	echo "Encryption is enabled."
+	cat /opt/murmur.enc.ini | envsubst >> /etc/murmur.ini
 fi
 
 if [ "$1" == "default" ]; then
         echo "Starting murmur server"
-        exec murmurd -ini /data/murmur.ini -v -fg
+        su-exec murmur murmurd -ini /etc/murmur.ini -v -fg
 else
     echo "Executing command"
     exec "$@"

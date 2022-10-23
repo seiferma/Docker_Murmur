@@ -1,21 +1,20 @@
-FROM alpine:latest
+FROM alpine:3.16
 
 WORKDIR /murmur
 
-RUN VERSION=1.3.1-r0 && \
-    apk --no-cache add murmur=${VERSION} && \
+RUN VERSION=1.4.230-r4 && \
+    apk --no-cache add murmur=${VERSION} su-exec gettext && \
     VERSION=
 
-COPY ["murmur.ini", "start.sh", "./"]
+ADD murmur.*.ini /opt/
+ADD start.sh /opt/
 
 ENV DATA_VOLUME=/data
 RUN mkdir -p ${DATA_VOLUME} && \
     chown murmur:murmur ${DATA_VOLUME}
 
-USER murmur
-
 EXPOSE 64738
 EXPOSE 64738/udp
 
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["/opt/start.sh"]
 CMD ["default"]
