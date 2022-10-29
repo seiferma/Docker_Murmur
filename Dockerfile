@@ -10,8 +10,7 @@ ADD murmur.*.ini /opt/
 ADD start.sh /opt/
 
 ENV DATA_VOLUME=/data
-RUN mkdir -p ${DATA_VOLUME} && \
-    chown murmur:murmur ${DATA_VOLUME}
+VOLUME ["${DATA_VOLUME}"]
 
 EXPOSE 64738
 EXPOSE 64738/udp
