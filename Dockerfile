@@ -1,8 +1,8 @@
-FROM alpine:3.16
+FROM alpine:latest
 
 WORKDIR /murmur
 
-RUN VERSION=1.4.230-r4 && \
+RUN VERSION=1.4.287-r0 && \
     apk --no-cache add murmur=${VERSION} su-exec gettext && \
     VERSION=
 
