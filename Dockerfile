@@ -1,10 +1,11 @@
 FROM alpine:latest
 
+ARG VERSION
+
 WORKDIR /murmur
 
-RUN VERSION=1.4.287-r0 && \
-    apk --no-cache add murmur=${VERSION} su-exec gettext && \
-    VERSION=
+RUN apk upgrade --no-cache && \
+    apk --no-cache add murmur=${VERSION} su-exec gettext
 
 ADD murmur.*.ini /opt/
 ADD start.sh /opt/
