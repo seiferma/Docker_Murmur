@@ -1,5 +1,5 @@
 variable "VERSION" {
-  default = "1.4.287-r10"
+  default = "1.4.287-r11"
 }
 
 group "default" {
