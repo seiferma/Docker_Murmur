@@ -1,5 +1,6 @@
 variable "VERSION" {
-  default = "1.5.634-r0"
+  # renovate: datasource=repology depName=alpine_3_22/murmur versioning=loose
+  default = "1.5.735-r3"
 }
 
 group "default" {
