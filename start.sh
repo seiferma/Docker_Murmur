@@ -23,7 +23,7 @@ fi
 
 if [ "$1" == "default" ]; then
         echo "Starting murmur server"
-        su-exec $USER_NAME murmurd -ini /etc/murmur.ini -v -fg
+        su-exec $USER_NAME mumble-server -ini /etc/murmur.ini -v -fg
 else
 	echo "Executing command"
 	exec "$@"
