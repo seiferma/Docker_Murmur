@@ -1,6 +1,6 @@
 variable "VERSION" {
-  # renovate: datasource=repology depName=alpine_3_23/murmur versioning=loose
-  default = "1.5.857-r0"
+  # renovate: datasource=repology depName=alpine_3_24/mumble-server versioning=loose
+  default = "1.5.857-r2"
 }
 
 group "default" {
