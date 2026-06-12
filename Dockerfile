@@ -5,7 +5,7 @@ ARG VERSION
 WORKDIR /murmur
 
 RUN apk upgrade --no-cache && \
-    apk --no-cache add murmur=${VERSION} su-exec gettext
+    apk --no-cache add mumble-server=${VERSION} su-exec gettext
 
 ADD murmur.*.ini /opt/
 ADD start.sh /opt/
